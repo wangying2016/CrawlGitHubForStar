@@ -2,6 +2,8 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 from bs4 import BeautifulSoup
 
+
+print('Please input github user name:')
 userName = input()
 url = userName + '?tab=repositories'
 openFailed = False
@@ -11,7 +13,7 @@ while True:
     # 1. Open repositories page.
     try:
         html = urlopen('https://github.com/' + url)
-        bsObj = BeautifulSoup(html)
+        bsObj = BeautifulSoup(html, 'html.parser')
     except HTTPError as e:
         print('open ' + 'https://github.com/' + url + ' failed.')
         openFailed = True
@@ -30,5 +32,3 @@ while True:
 
 if openFailed is False:
     print(userName + ' has ' + str(count) + ' stars.')
-
-
