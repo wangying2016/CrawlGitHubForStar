@@ -66,7 +66,7 @@ while True:
 
         # ii. Input repository name.
         print(star.parent.parent.parent.h3.a['href'] + ' has ' + str(starNumber)
-              + ' stars.')
+              + (' stars.' if starNumber > 1 else ' star.'))
 
     # 3. Count forks at one page.
     for fork in bsObj.findAll('svg', {'aria-label': 'fork'}):
@@ -76,7 +76,7 @@ while True:
 
         # ii. Input repository name.
         print(fork.parent.parent.parent.h3.a['href'] + ' has ' + str(forkNumber)
-              + 'forks.')
+              + (' forks.' if forkNumber > 1 else ' fork.'))
 
     # 3. Find next page.
     nextPage = bsObj.find('a', {'class': 'next_page'})
